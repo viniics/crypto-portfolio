@@ -1,5 +1,7 @@
 package cryptoPorfolio.crypto.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import cryptoPorfolio.crypto.dto.PurchaseDTO;
@@ -21,5 +23,9 @@ public class CryptoService {
     private Purchase convertPurchaseDTOToPurchase(PurchaseDTO purchaseDTO){
     Purchase purchase = new Purchase(purchaseDTO.getToken(), purchaseDTO.getFiatValue(), purchaseDTO.getCoinPrice(), purchaseDTO.getPurchaseDate());
     return purchase;
+    }
+
+    public List<Purchase> findTokenPurchaseHistory(String token){
+        return purchaseRepository.findByToken(token);
     }
 }
