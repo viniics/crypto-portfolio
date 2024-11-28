@@ -19,7 +19,7 @@ public class CryptoController {
     @PostMapping("/addPurchase")
     public ResponseEntity<?> insertPurchase(@RequestBody PurchaseDTO purchaseDTO){
         Purchase purchase = cryptoService.insertNewPurchase(purchaseDTO);
-        return ResponseEntity.ok(purchase.getTransactionId());
+        return ResponseEntity.ok(purchase);
     }
 
 }
