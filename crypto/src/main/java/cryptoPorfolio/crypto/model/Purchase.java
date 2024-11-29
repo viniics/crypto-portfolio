@@ -19,13 +19,16 @@ public class Purchase {
 
     @Column(nullable = false)
     private String token;
-    
+
     @Column(nullable = false)
     private Double fiatValue;
-    
+
     @Column(nullable = false)
     private Double coinPrice;
-    
+
+    @Column(nullable = false)
+    private Double coinAmount;
+
     @Column
     private LocalDate purchaseDate;
 
@@ -33,6 +36,7 @@ public class Purchase {
         this.token = token;
         this.fiatValue = fiatValue;
         this.coinPrice = coinPrice;
+        this.coinAmount = calculateCoinAmount();
     }
 
     public Purchase(String token, Double fiatValue, Double coinPrice, LocalDate purchaseDate) {
@@ -40,6 +44,10 @@ public class Purchase {
         this.fiatValue = fiatValue;
         this.coinPrice = coinPrice;
         this.purchaseDate = purchaseDate;
+        this.coinAmount = calculateCoinAmount();
     }
-    
+
+    private Double calculateCoinAmount() {
+        return fiatValue != null && coinPrice != null && coinPrice != 0 ? fiatValue / coinPrice : 0.0;
+    }
 }
