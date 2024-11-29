@@ -1,5 +1,6 @@
 package cryptoPorfolio.crypto.model;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Getter;
@@ -22,6 +23,7 @@ public class Token {
     }
 
     public double changeBalance(Double value){
+        if(amount+value<0) throw new RuntimeException("You don't have enough balance to sell!");
         amount += value;
         return amount;
     }
