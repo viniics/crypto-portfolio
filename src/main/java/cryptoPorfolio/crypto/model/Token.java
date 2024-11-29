@@ -23,7 +23,7 @@ public class Token {
     }
 
     public double changeBalance(Double value){
-        if(amount+value<0) throw new RuntimeException("You don't have enough balance to sell!");
+        if(amount+value<0) throw new RuntimeException("You don't have enough tokens to sell!");
         amount += value;
         return amount;
     }

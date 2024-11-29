@@ -24,7 +24,7 @@ public class WalletService {
             //Criar o token
         }
         else if (token == null){
-            throw new RuntimeErrorException(null, "You don't own this token to sell!");
+            throw new RuntimeErrorException(null, "You don't own this token!");
         }
         else token.changeBalance(tokenDTO.getAmount());
         walletRepository.save(wallet);
