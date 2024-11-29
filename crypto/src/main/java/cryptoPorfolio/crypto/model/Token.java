@@ -14,11 +14,16 @@ public class Token {
     @Id
     private String token;
 
-    private double ammount;
+    private double amount;
 
     public Token(String token) {
         this.token = token;
-        this.ammount = 0;
+        this.amount = 0;
+    }
+
+    public double changeBalance(Double value){
+        amount += value;
+        return amount;
     }
 
 }
