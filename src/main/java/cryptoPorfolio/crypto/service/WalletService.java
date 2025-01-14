@@ -37,4 +37,9 @@ public class WalletService {
         }
         return null;
     }
+
+    public double showTokenBalance(Token token){
+        return token.getAmount();
+    }
+
 }
