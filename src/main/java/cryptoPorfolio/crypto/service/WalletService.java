@@ -17,8 +17,8 @@ import lombok.AllArgsConstructor;
 public class WalletService {
     private final WalletRepository walletRepository;
 
-    public Token addTokenPurchase(TokenDTO tokenDTO, Long id){
-        Wallet wallet = walletRepository.findById(id).orElseThrow(() -> new RuntimeException("Wallet not found with id: " + id));
+    public Token addTokenPurchase(TokenDTO tokenDTO, Long walletId){
+        Wallet wallet = walletRepository.findById(walletId).orElseThrow(() -> new RuntimeException("Wallet not found with id: " + walletId));
         Token token = findTokenInWallet(wallet.getTokens(), tokenDTO.getToken());
         if(token == null && tokenDTO.getAmount()>0){
             //Criar o token
@@ -40,6 +40,17 @@ public class WalletService {
 
     public double showTokenBalance(Token token){
         return token.getAmount();
+    }
+
+    public String tokenBalanceString(String token,Long walletId){
+        Token t = getTokenByString(token, walletId);
+        return t.getAmount() + "ok";
+    }
+
+    private Token getTokenByString(String token, Long walletId){
+        Wallet wallet = walletRepository.findById(walletId).orElseThrow(() -> new RuntimeException("Wallet not found with id: " + walletId));
+        Token t = findTokenInWallet(wallet.getTokens(), token);
+        return t;
     }
 
 }

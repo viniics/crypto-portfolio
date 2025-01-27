@@ -31,4 +31,10 @@ public class CryptoController {
         List<Purchase> tokenPurchases = cryptoService.findTokenPurchaseHistory(token);
         return ResponseEntity.ok(tokenPurchases);
     }
+
+    @GetMapping("/getTokenBalance/{token}")
+    public ResponseEntity<?> getTokenBalance(@PathVariable String token){
+        String tokenBalance = "toDo";
+        return ResponseEntity.ok(tokenBalance);
+    }
 }

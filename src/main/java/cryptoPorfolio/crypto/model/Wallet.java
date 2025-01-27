@@ -20,7 +20,4 @@ public class Wallet {
     private Long walletId;
     @OneToMany
     private List<Token> tokens;
-
-
-
 }
